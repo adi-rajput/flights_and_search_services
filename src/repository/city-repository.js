@@ -19,7 +19,7 @@ class CityRepository {
                 }
             });
         } catch (error) {
-            console.error('Error in deleteCity:', error);
+            console.error('Error in repository layer',);
             throw error;  // Throw the original error without wrapping it in an object
         }
     }
