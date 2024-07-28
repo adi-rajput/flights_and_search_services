@@ -24,23 +24,29 @@ class CityRepository {
         }
     }
 
-    async updateCity({ cityId, data }) {
-           try {
-            const city = await City.update(data,{
-                where:{
-                    id: cityId
-                }
-            });
-            return city;
-           } catch (error) {
-            console.error('Error in repository layer',);
-            throw error;
-           }    
+    async updateCity(cityId, { name }) {
+        try {
+          const city = await City.update(
+            { name },
+            {
+              where: {
+                id: cityId,
+              },
+            }
+          );
+          // const city = await City.findByPk(cityid);
+          // city.name = data.name;
+          // await city.save();
+          return city;
+        } catch (error) {
+          console.log("something went wrong in the repo");
+          throw { error };
         }
+      }
 
     async getCity(cityId){
         try {
-            const city =  await City.findByPk({cityId});
+            const city =  await City.findByPk(cityId);
             return city;
         } catch (error) {
             console.error('Error in repository layer',);

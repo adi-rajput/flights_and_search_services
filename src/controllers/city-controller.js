@@ -42,27 +42,7 @@ const destroy =async  (req, res) => {
 
 const get =async (req, res) => {
     try {
-        const response = await cityService.updateCity(req.params.id,req.body);
-        return res.status(200).json({
-            data:response,
-            success: true,
-            message:"Successfully updated a city",
-            err:{}
-        })
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({
-            data:{},
-            success:false,
-            message:"not able to update the city",
-            err : error
-        })
-    }
-};
-
-const update =async (req, res) => {
-    try {
-        const response = await cityService.deleteCity(req.params.id);
+        const response = await cityService.getCity(req.params.id,req.body);
         return res.status(200).json({
             data:response,
             success: true,
@@ -74,11 +54,31 @@ const update =async (req, res) => {
         return res.status(500).json({
             data:{},
             success:false,
-            message:"not able to get the city",
+            message:"not able to fetch the city",
             err : error
         })
     }
 };
+
+const update = async (req, res) => {
+    try {
+      const response = await cityService.updateCity(req.params.id, req.body);
+      return res.status(200).json({
+        data: response,
+        success: true,
+        message: "successfully updated a city",
+        err: {},
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        data: {},
+        success: false,
+        message: "not able to update a city",
+        err: error,
+      });
+    }
+  };
 
 module.exports = {
   create,
