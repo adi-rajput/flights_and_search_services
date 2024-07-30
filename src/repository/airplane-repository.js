@@ -10,6 +10,16 @@ class AirplaneRepository {
       throw error;  // Throw the original error without wrapping it in an object
     }
   }
-}
+  async getAirplane(id) {
+        try {
+          const airplane = await Airplane.findByPk(id);
+          return airplane;
+        } catch (error) {
+          console.log("Error in repository layer:", error.message);
+          throw error;
+        }
+      }
+    }
+
 
 module.exports = AirplaneRepository;
