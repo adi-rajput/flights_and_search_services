@@ -10,17 +10,19 @@ class FlightRepository {
       throw error;
     }
   }
-  async getFlight(flightId){
+  async getFlight(flightId) {
     try {
-      const flight = await Flights.findByPk({where:{id:flightId}});
+      const flight = await Flights.findByPk({ where: { id: flightId } });
       return flight;
     } catch (error) {
       console.error("Error in repository layer");
       throw error;
     }
   }
-  async getAllFlights(){
-
-  }
+  // async getAllFlights(filter) {
+  //   try {
+  //     const flights = await this 
+  //   } catch (error) {}
+  // }
 }
 module.exports = FlightRepository;

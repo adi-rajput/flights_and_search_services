@@ -1,4 +1,4 @@
-const AirplaneRepository = require("../repository/index");
+const AirplaneRepository = require("../repository/airplane-repository");
 
 class AirplaneService {
   constructor() {
